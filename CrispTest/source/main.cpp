@@ -1,7 +1,6 @@
-#include "test.h"
+#include "Core/EntryPoint.h"
 
-int main(int argc, char** argv)
+Crisp::Application* Crisp::CreateApplication()
 {
-	TestHello();
-	return 0;
+	return new Application;
 }
