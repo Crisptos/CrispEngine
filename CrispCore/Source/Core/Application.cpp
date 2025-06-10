@@ -3,13 +3,15 @@
 
 namespace Crisp
 {
-	void Application::InitializeApplication()
+	void Application::InitializeApp()
 	{
 		CRISP_LOG_INFO("Initializing Crisp Engine Client App...");
+		m_Platform.InitializePlatform();
 	}
 
-	void Application::DestroyApplication()
+	void Application::ShutdownApp()
 	{
-		CRISP_LOG_INFO("Destroying Crisp Engine Client App...");
+		CRISP_LOG_INFO("Shutting down Crisp Engine Client App...");
+		m_Platform.ShutdownPlatform();
 	}
 }
