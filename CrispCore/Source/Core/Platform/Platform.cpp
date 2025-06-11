@@ -1,5 +1,6 @@
 #include "Core/Platform/Platform.h"
 #include "Core/Logger.h"
+#include "Core/Platform/Input System/DefaultInput.h"
 #include <SDL3/SDL.h>
 
 namespace Crisp
@@ -14,10 +15,12 @@ namespace Crisp
 		}
 
 		m_Window.InitializeWindow(window_create_props);
+		Input::SetInst(new DefaultInput);
 	}
 
 	void Platform::UpdatePlatform(EventDispatcher& dispatcher)
 	{
+		Input::UpdateState();
 		SDL_Event sdl_event;
 		while (SDL_PollEvent(&sdl_event))
 		{
@@ -27,6 +30,30 @@ namespace Crisp
 				{
 					Event crisp_event = {EventType::APP_QUIT, false};
 					dispatcher.NotifyAll(crisp_event);
+					break;
+				}
+
+				case SDL_EVENT_KEY_DOWN:
+				{
+					Input::ReportKeyState(sdl_event.key.scancode, true);
+					break;
+				}
+
+				case SDL_EVENT_KEY_UP:
+				{
+					Input::ReportKeyState(sdl_event.key.scancode, false);
+					break;
+				}
+
+				case SDL_EVENT_MOUSE_BUTTON_DOWN:
+				{
+					Input::ReportMouseButtonState(sdl_event.button.button, true);
+					break;
+				}
+
+				case SDL_EVENT_MOUSE_BUTTON_UP:
+				{
+					Input::ReportMouseButtonState(sdl_event.button.button, false);
 					break;
 				}
 			}

@@ -5,7 +5,12 @@ namespace Crisp
 	class DefaultInput : public Input
 	{
 	public:
+		DefaultInput();
+
+	private:
 		void UpdateStateImpl() override;
+		void ReportKeyStateImpl(uint32_t key, bool is_pressed) override;
+		void ReportMouseButtonStateImpl(uint8_t mouse_btn, bool is_pressed) override;
 
 		bool IsKeyPressedImpl(uint32_t key) const override;
 		bool IsKeyHeldImpl(uint32_t key) const override;

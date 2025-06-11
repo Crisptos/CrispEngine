@@ -1,6 +1,9 @@
 #include "Core/Logger.h"
 #include "Core/Application.h"
 
+// test
+#include "Core/Platform/Input System/Input.h"
+
 namespace Crisp
 {
 	void Application::InitializeApp(WindowCreateProps& window_create_props)
@@ -17,6 +20,9 @@ namespace Crisp
 			while (!m_IsSuspended && m_IsRunning)
 			{
 				m_Platform.UpdatePlatform(m_AppDispatcher);
+				// TODO just for testing the input class
+				if (Input::IsKeyPressed(0x16)) CRISP_LOG_DEBUG("Key {0} was pressed!", 0x16);
+				if (Input::IsKeyJustReleased(0x16)) CRISP_LOG_DEBUG("Key {0} was released!", 0x16);
 			}
 		}
 	}

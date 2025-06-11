@@ -18,6 +18,21 @@ namespace Crisp
 		s_InputInstance = inst;
 	}
 
+	void Input::UpdateState()
+	{
+		return GetInst().UpdateStateImpl();
+	}
+
+	void Input::ReportKeyState(uint32_t key, bool is_pressed)
+	{
+		GetInst().ReportKeyStateImpl(key, is_pressed);
+	}
+
+	void Input::ReportMouseButtonState(uint8_t mouse_btn, bool is_pressed)
+	{
+		GetInst().ReportMouseButtonStateImpl(mouse_btn, is_pressed);
+	}
+
 	bool Input::IsKeyPressed(uint32_t key)
 	{
 		return GetInst().IsKeyPressedImpl(key);
@@ -47,11 +62,4 @@ namespace Crisp
 	{
 		return GetInst().IsMouseButtonJustReleasedImpl(mouse_btn);
 	}
-
-	void Input::UpdateState()
-	{
-		return GetInst().UpdateStateImpl();
-	}
-
-
 }
