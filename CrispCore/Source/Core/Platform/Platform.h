@@ -1,5 +1,4 @@
 #pragma once
-#include "Core/Platform/Input.h"
 #include "Core/Platform/Window.h"
 #include "Core/Events/EventDispatcher.h"
 
@@ -13,7 +12,6 @@ namespace Crisp
 		void ShutdownPlatform();
 
 	private:
-		Input m_Input;
 		Window m_Window;
 	};
 }
