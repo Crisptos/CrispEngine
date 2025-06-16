@@ -1,4 +1,4 @@
-#include "Core/Platform/Input System/DefaultInput.h"
+#include "Platform/Input System/DefaultInput.h"
 
 namespace Crisp
 {
@@ -16,16 +16,16 @@ namespace Crisp
 		std::memcpy(m_DefaultInput.prev_mouse_btn, m_DefaultInput.current_mouse_btn, sizeof(m_DefaultInput.current_mouse_btn));
 	}
 
-	void DefaultInput::ReportKeyStateImpl(uint32_t key, bool is_pressed)
+	void DefaultInput::ReportKeyStateImpl(uint16_t key, bool is_pressed)
 	{
-		if (key < 0 || key >= 128)
+		if (key < 0 || key >= 256)
 			return;
 
 		if (m_DefaultInput.current_keys[key] != is_pressed)
 			m_DefaultInput.current_keys[key] = is_pressed;
 	}
 
-	void DefaultInput::ReportMouseButtonStateImpl(uint8_t mouse_btn, bool is_pressed)
+	void DefaultInput::ReportMouseButtonStateImpl(uint16_t mouse_btn, bool is_pressed)
 	{
 		if (mouse_btn < 0 || mouse_btn >= 16)
 			return;
@@ -34,17 +34,17 @@ namespace Crisp
 			m_DefaultInput.current_mouse_btn[mouse_btn] = is_pressed;
 	}
 
-	bool DefaultInput::IsKeyPressedImpl(uint32_t key) const
+	bool DefaultInput::IsKeyPressedImpl(KeyCode key) const
 	{
 		return m_DefaultInput.current_keys[key] && !m_DefaultInput.prev_keys[key];
 	}
 
-	bool DefaultInput::IsKeyHeldImpl(uint32_t key) const
+	bool DefaultInput::IsKeyHeldImpl(KeyCode key) const
 	{
 		return m_DefaultInput.current_keys[key] && m_DefaultInput.prev_keys[key];
 	}
 
-	bool DefaultInput::IsKeyJustReleasedImpl(uint32_t key) const
+	bool DefaultInput::IsKeyJustReleasedImpl(KeyCode key) const
 	{
 		return !m_DefaultInput.current_keys[key] && m_DefaultInput.prev_keys[key];
 	}

@@ -1,4 +1,4 @@
-#include "Core/Platform/Input System/Input.h"
+#include "Platform/Input System/Input.h"
 #include <SDL3/SDL.h>
 #include <cassert>
 
@@ -23,27 +23,27 @@ namespace Crisp
 		return GetInst().UpdateStateImpl();
 	}
 
-	void Input::ReportKeyState(uint32_t key, bool is_pressed)
+	void Input::ReportKeyState(uint16_t key, bool is_pressed)
 	{
 		GetInst().ReportKeyStateImpl(key, is_pressed);
 	}
 
-	void Input::ReportMouseButtonState(uint8_t mouse_btn, bool is_pressed)
+	void Input::ReportMouseButtonState(uint16_t mouse_btn, bool is_pressed)
 	{
 		GetInst().ReportMouseButtonStateImpl(mouse_btn, is_pressed);
 	}
 
-	bool Input::IsKeyPressed(uint32_t key)
+	bool Input::IsKeyPressed(KeyCode key)
 	{
 		return GetInst().IsKeyPressedImpl(key);
 	}
 
-	bool Input::IsKeyHeld(uint32_t key)
+	bool Input::IsKeyHeld(KeyCode key)
 	{
 		return GetInst().IsKeyHeldImpl(key);
 	}
 
-	bool Input::IsKeyJustReleased(uint32_t key)
+	bool Input::IsKeyJustReleased(KeyCode key)
 	{
 		return GetInst().IsKeyJustReleasedImpl(key);
 	}

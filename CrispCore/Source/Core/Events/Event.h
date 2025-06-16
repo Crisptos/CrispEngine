@@ -3,7 +3,7 @@
 
 namespace Crisp
 {
-	enum EventType : uint8_t
+	enum class EventType : uint8_t
 	{
 		KEYBOARD_KEY_DOWN,
 		KEYBOARD_KEY_UP,

@@ -2,7 +2,7 @@
 #include "Core/Application.h"
 
 // test
-#include "Core/Platform/Input System/Input.h"
+#include "Platform/Input System/Input.h"
 
 namespace Crisp
 {
@@ -21,8 +21,10 @@ namespace Crisp
 			{
 				m_Platform.UpdatePlatform(m_AppDispatcher);
 				// TODO just for testing the input class
-				if (Input::IsKeyPressed(0x16)) CRISP_LOG_DEBUG("Key {0} was pressed!", 0x16);
-				if (Input::IsKeyJustReleased(0x16)) CRISP_LOG_DEBUG("Key {0} was released!", 0x16);
+				if (Input::IsKeyPressed(KeyCode::S)) CRISP_LOG_DEBUG("Key {0} was pressed!", 0x16);
+				if (Input::IsKeyJustReleased(KeyCode::S)) CRISP_LOG_DEBUG("Key {0} was released!", 0x16);
+				if (Input::IsMouseButtonPressed(MouseButton::ONE)) CRISP_LOG_DEBUG("Mouse Btn {0} was pressed!", 0x1);
+				if (Input::IsMouseButtonJustReleased(MouseButton::ONE)) CRISP_LOG_DEBUG("Mouse Btn {0} was released!", 0x1);
 			}
 		}
 	}

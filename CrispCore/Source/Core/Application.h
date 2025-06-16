@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Platform/Platform.h"
+#include "Platform/Platform.h"
 #include "Core/Events/EventDispatcher.h"
 
 namespace Crisp

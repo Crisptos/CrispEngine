@@ -1,6 +1,6 @@
-#include "Core/Platform/Platform.h"
+#include "Platform/Platform.h"
 #include "Core/Logger.h"
-#include "Core/Platform/Input System/DefaultInput.h"
+#include "Platform/Input System/DefaultInput.h"
 #include <SDL3/SDL.h>
 
 namespace Crisp
