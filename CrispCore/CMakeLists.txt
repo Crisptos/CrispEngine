@@ -1,3 +1,5 @@
+find_package(Vulkan)
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -28,4 +30,4 @@ add_library(CrispCore STATIC ${CORE_SOURCE})
 
 target_include_directories(CrispCore PUBLIC ${CORE_SOURCE_DIR})
 
-target_link_libraries(CrispCore spdlog::spdlog SDL3::SDL3)
+target_link_libraries(CrispCore spdlog::spdlog SDL3::SDL3 Vulkan::Vulkan)
