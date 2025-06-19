@@ -1,6 +1,7 @@
 #pragma once
 #include "Platform/Window.h"
 #include "Core/Events/EventDispatcher.h"
+#include "Renderer/Renderer.h"
 
 namespace Crisp
 {
@@ -12,6 +13,7 @@ namespace Crisp
 		void ShutdownPlatform();
 
 	private:
+		Renderer m_Renderer;
 		Window m_Window;
 	};
 }

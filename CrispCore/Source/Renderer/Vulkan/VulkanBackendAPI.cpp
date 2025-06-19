@@ -1,24 +1,45 @@
 #include "Renderer/Vulkan/VulkanIncludes.h"
 #include "Renderer/Vulkan/VulkanBackendAPI.h"
 
+#include "Core/Logger.h"
+
 namespace Crisp
 {
-	void VulkanBackend::InitializeRendererBackendAPI()
+	void VulkanBackend::InitializeRendererBackendAPI(const RendererSettings& renderer_init_settings)
 	{
-		VkApplicationInfo app_info = {};
-		app_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-		app_info.apiVersion = VK_API_VERSION_1_4;
-		app_info.pApplicationName = "Test";
-		app_info.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
-		app_info.pEngineName = "Crisp Engine";
-		app_info.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+		vkb::InstanceBuilder inst_builder;
 
-		VkInstanceCreateInfo create_info = {};
-		create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-		create_info.pApplicationInfo = &app_info;
+		auto built_inst = inst_builder.set_app_name("Crisp Engine")
+			.request_validation_layers(true)
+			.use_default_debug_messenger()
+			.require_api_version(1, 4, 0)
+			.build();
+
+		vkb::Instance vkb_inst = built_inst.value();
+		m_Instance = vkb_inst.instance;
+		m_DebugMessenger = vkb_inst.debug_messenger;
+		CRISP_LOG_INFO("Created VkInstance and DebugMessenger");
+
 	}
 
 	void VulkanBackend::ShutdownRendererBackendAPI()
+	{
+		CRISP_LOG_INFO("Shutting down VkInstance and DebugMessenger");
+		vkb::destroy_debug_utils_messenger(m_Instance, m_DebugMessenger);
+		vkDestroyInstance(m_Instance, nullptr);
+	}
+
+	void VulkanBackend::BeginFrame()
+	{
+
+	}
+
+	void VulkanBackend::Submit(const FrameData& frame_data)
+	{
+
+	}
+
+	void VulkanBackend::EndFrame()
 	{
 
 	}

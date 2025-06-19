@@ -22,6 +22,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL3)
 
+FetchContent_Declare(
+    vk-bootstrap
+    GIT_REPOSITORY https://github.com/charles-lunarg/vk-bootstrap
+    GIT_TAG        v1.4.315
+)
+FetchContent_MakeAvailable(vk-bootstrap)
+
 set(CORE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
 file(GLOB_RECURSE CORE_SOURCE ${CORE_SOURCE_DIR}/*.cpp ${CORE_SOURCE_DIR}/*.h)
@@ -30,4 +37,4 @@ add_library(CrispCore STATIC ${CORE_SOURCE})
 
 target_include_directories(CrispCore PUBLIC ${CORE_SOURCE_DIR})
 
-target_link_libraries(CrispCore spdlog::spdlog SDL3::SDL3 Vulkan::Vulkan)
+target_link_libraries(CrispCore spdlog::spdlog SDL3::SDL3 Vulkan::Vulkan vk-bootstrap::vk-bootstrap)

@@ -1,5 +1,5 @@
 #include "Window.h"
-
+#include <SDL3/SDL.h>
 #include "Core/Logger.h"
 
 namespace Crisp

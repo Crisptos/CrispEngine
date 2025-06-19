@@ -1,5 +1,7 @@
 #pragma once
-#include <SDL3/SDL.h>
+
+// Forward Declaration
+struct SDL_Window;
 
 namespace Crisp
 {
