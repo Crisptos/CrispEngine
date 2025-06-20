@@ -9,7 +9,7 @@ namespace Crisp
 	class RendererBackend
 	{
 	public:
-		virtual void InitializeRendererBackendAPI(const RendererSettings& renderer_init_settings) = 0;
+		virtual bool InitializeRendererBackendAPI(const RendererSettings& renderer_init_settings) = 0;
 		virtual void ShutdownRendererBackendAPI() = 0;
 
 		virtual void BeginFrame() = 0;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Platform/Platform.h"
+#include "Renderer/Renderer.h"
 #include "Core/Events/EventDispatcher.h"
 
 namespace Crisp
@@ -7,7 +8,7 @@ namespace Crisp
 	class Application : public EventHandler
 	{
 	public:
-		void InitializeApp(WindowCreateProps& window_create_props);
+		bool InitializeApp(WindowCreateProps& window_create_props);
 		void Run();
 		void ShutdownApp();
 
@@ -19,6 +20,7 @@ namespace Crisp
 
 		// Engine components
 		Platform m_Platform;
+		Renderer m_Renderer;
 		EventDispatcher m_AppDispatcher;
 
 		// Application state

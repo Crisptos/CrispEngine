@@ -15,9 +15,11 @@ namespace Crisp
 	class Window
 	{
 	public:
-		void InitializeWindow(WindowCreateProps& window_create_props);
+		bool InitializeWindow(WindowCreateProps& window_create_props);
 		void UpdateWindow();
 		void ShutdownWindow();
+
+		SDL_Window* GetHandle() const;
 
 	private:
 		SDL_Window* m_PlatformWindow;

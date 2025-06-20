@@ -5,20 +5,23 @@
 
 namespace Crisp
 {
-	void Platform::InitializePlatform(WindowCreateProps& window_create_props)
+	bool Platform::InitializePlatform(WindowCreateProps& window_create_props)
 	{
 		CRISP_LOG_INFO("Initializing platform layer...");
 		if (!SDL_Init(SDL_INIT_VIDEO))
 		{
 			CRISP_LOG_CRITICAL("SDL3 failed to initialize!");
-			std::abort();
+			return false;
 		}
 
-		m_Window.InitializeWindow(window_create_props);
-
-
-		m_Renderer.InitializeRenderer({ {BackendAPI::VULKAN}, window_create_props.w, window_create_props.h, false });
+		if (!m_Window.InitializeWindow(window_create_props))
+		{
+			CRISP_LOG_CRITICAL("Failed to initialize platform window!");
+			return false;
+		}
 		Input::SetInst(new DefaultInput);
+
+		return true;
 	}
 
 	void Platform::UpdatePlatform(EventDispatcher& dispatcher)
@@ -66,8 +69,12 @@ namespace Crisp
 	void Platform::ShutdownPlatform()
 	{
 		CRISP_LOG_INFO("Shutting down platform layer...");
-		m_Renderer.ShutdownRenderer();
 		m_Window.ShutdownWindow();
 		SDL_Quit();
+	}
+
+	Window& Platform::GetWindow()
+	{
+		return m_Window;
 	}
 }

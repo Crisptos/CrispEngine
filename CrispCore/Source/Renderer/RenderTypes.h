@@ -1,5 +1,8 @@
 #pragma once
 
+// Forward Declarations
+struct SDL_Window;
+
 namespace Crisp
 {
 	// Primitive Components
@@ -28,6 +31,7 @@ namespace Crisp
 	struct RendererSettings
 	{
 		RendererContext context;
+		SDL_Window* window_handle;
 		uint32_t w;
 		uint32_t h;
 		bool is_fullscreen;

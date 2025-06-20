@@ -6,7 +6,7 @@
 
 namespace Crisp
 {
-	void Renderer::InitializeRenderer(const RendererSettings& renderer_init_settings)
+	bool Renderer::InitializeRenderer(const RendererSettings& renderer_init_settings)
 	{
 		// Create API specific backend
 		switch (renderer_init_settings.context.api)
@@ -26,7 +26,7 @@ namespace Crisp
 			}
 		}
 
-		renderer_backend->InitializeRendererBackendAPI(renderer_init_settings);
+		return renderer_backend->InitializeRendererBackendAPI(renderer_init_settings);
 	}
 
 	void Renderer::ShutdownRenderer()

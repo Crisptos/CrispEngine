@@ -9,7 +9,7 @@ namespace Crisp
 	{
 
 	public:
-		void InitializeRenderer(const RendererSettings& renderer_init_settings);
+		bool InitializeRenderer(const RendererSettings& renderer_init_settings);
 		void ShutdownRenderer();
 
 		void BeginFrame();
