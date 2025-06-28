@@ -1,5 +1,5 @@
 #include "Platform/Input System/DefaultInput.h"
-
+#include <cstring>
 namespace Crisp
 {
 	DefaultInput::DefaultInput()
