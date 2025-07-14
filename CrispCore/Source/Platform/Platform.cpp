@@ -39,6 +39,15 @@ namespace Crisp
 					break;
 				}
 
+				case SDL_EVENT_WINDOW_RESIZED:
+				{
+					Event crisp_event = {EventType::WINDOW_RESIZE, false};
+					crisp_event.window_resize.new_w = sdl_event.window.data1;
+					crisp_event.window_resize.new_h = sdl_event.window.data2;
+					dispatcher.NotifyAll(crisp_event);
+					break;
+				}
+
 				case SDL_EVENT_KEY_DOWN:
 				{
 					Input::ReportKeyState(sdl_event.key.scancode, true);

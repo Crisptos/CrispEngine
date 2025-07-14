@@ -3,6 +3,9 @@
 #include "Renderer/RenderTypes.h"
 #include "Core/Logger.h"
 
+// TODO - for testing
+#include "Renderer/Vulkan/VulkanRenderPass.h"
+
 namespace Crisp
 {
 	// Vulkan functions only in this module

@@ -1,22 +1,9 @@
 #pragma once
 #include "Renderer/RendererBackend.h"
+#include "Renderer/Vulkan/VulkanForwardDeclarations.h"
 
 namespace Crisp
 {
-	// Forward Declarations
-	//		Vulkan specific types
-	typedef struct VkInstance_T* VkInstance;
-	typedef struct VkDebugUtilsMessengerEXT_T* VkDebugUtilsMessengerEXT;
-	//__
-	typedef struct VkSurfaceKHR_T* VkSurfaceKHR;
-	typedef struct VkDevice_T* VkDevice;
-	typedef struct VkPhysicalDevice_T* VkPhysicalDevice;
-	//__
-	typedef struct VkSwapchainKHR_T* VkSwapchainKHR;
-	typedef struct VkImage_T* VkImage;
-	typedef struct VkImageView_T* VkImageView;
-	
-
 	//		Crisp Engine types
 	struct RendererSettings;
 	struct FrameData;
