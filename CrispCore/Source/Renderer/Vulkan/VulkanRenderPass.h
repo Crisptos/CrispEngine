@@ -1,5 +1,6 @@
 #pragma once
 #include "Renderer/Vulkan/VulkanForwardDeclarations.h"
+#include "Renderer/Vulkan/VulkanCommandBuffer.h"
 
 namespace Crisp
 {
@@ -16,11 +17,17 @@ namespace Crisp
 		VkRenderPass handle;
 		VulkanRenderPassState state;
 
-		void InitializeRenderPass(VkDevice logical_device, uint32_t image_format, uint32_t depth_format);
-		void ShutdownRenderPass();
+		// Clear Color
+		float r, g, b, a;
+		// Depth and Stencil Values
+		float depth;
+		uint32_t stencil;
 
-		void BeginRenderPass();
-		void EndRenderPass();
+		bool InitializeRenderPass(VkDevice logical_device, uint32_t image_format, uint32_t depth_format);
+		void ShutdownRenderPass(VkDevice logical_device);
+
+		void BeginRenderPass(VulkanCommandBuffer& command_buffer, VkFramebuffer frame_buffer);
+		void EndRenderPass(VulkanCommandBuffer& command_buffer);
 	};
 
 

@@ -17,6 +17,7 @@ namespace Crisp
 	typedef struct VkImage_T* VkImage;
 	typedef struct VkImageView_T* VkImageView;
 	typedef struct VkRenderPass_T* VkRenderPass;
+	typedef struct VkFramebuffer_T* VkFramebuffer;
 
 
 }
